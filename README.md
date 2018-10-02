@@ -12,6 +12,7 @@ pip install jieba
 ```
 Rasa nlu github网址：https://github.com/RasaHQ/rasa_nlu
 Rasa core github网址：https://github.com/RasaHQ/rasa_core
+
 # 2 项目目录
 ```
 yue-chatbot
@@ -58,6 +59,7 @@ pipeline:
 - name: "intent_featurizer_mitie"
 - name: "intent_classifier_sklearn"
 ```
+
 ## 3.1 nlu的训练
 - 训练可以直接调用系统的train放，用命令行的方式
 ```
@@ -77,6 +79,7 @@ def train_nlu():
     model_directory = trainer.persist("models/", project_name="nlu",fixed_nmodel_name="model_ner_reg_all")
 
 ```
+
 ## 3.2 jieba分词自定义词典问题
 因为分词结果中各个词的位置和实体的位置不匹配，会使得系统丢掉样本。
 > 例：“粤通卡如何绑票根网”中，分词结果是“绑票”为一个词，但是实体“票根网”才是我们想要的，“票根网”开始位置不是分词结果某个词的开始位置，所以这条样本会被丢弃，目前被丢弃的大概有1500条
@@ -92,6 +95,7 @@ npm i chatito -g
 ```
 npx chatito chatito文件或者目录 --format rasa
 ```
+
 ## 3.4 额外正则特征用于意图分类
 nlu的训练数据中，可以使用一些正则特征来增强特征的表示，以用于意图分类。
 ```json
@@ -100,7 +104,7 @@ nlu的训练数据中，可以使用一些正则特征来增强特征的表示�
     "regex_features":[
       {
         "name":"reg1",
-        "pattern":"(信用卡|储值卡|记账卡|联名记账卡|联名卡|单位记账卡|粤通卡|借记卡|银行卡|粤通储值卡|粤通卡储值卡|IC卡|粤通卡记账卡|粤通记账卡|银联卡|交通卡)"
+        "pattern":"(信用卡|储值卡|记账卡|银联卡|交通卡)"
       },
       {
         "name":"reg2",
@@ -195,9 +199,11 @@ pipeline:
 - name: "intent_featurizer_mitie"
 - name: "intent_classifier_sklearn"
 ```
+
 # 4 Rasa core
 rasa core的训练也需要两个文件：一个是定义domain的文件，定义了意图、实体、槽、actin和模板回复；一个story.md文件，用意图和action构建了会话的训练数据。相关文件在`core_data`目录下。
 - domain.yaml文件
+
 ````yaml
 slots:
   槽名1：
@@ -273,6 +279,7 @@ def train_dialogue(domain_file="core_data/domain.yml",
 
     agent.persist(model_path)
 ```
+
 ## 4.2 自定义action
 action用于处理具体的业务逻辑。
 自定义步骤：
@@ -331,6 +338,7 @@ class ActionDefaultFallback(Action):
 步骤：
 - 首先在domain.yml文件中增加actin：yue_action.ActionDefaultFallback
 - 在yue_action.py文件中实现ActionDefaultFallback，其中name方法返回的名字一定要和传给FallbackPolicy的fallback_action_name参数保持一致。
+
 ## 4.4 消息返回
 整体来说，有两种方式返回消息
 - 如果rasa core判定直接使用某个模板来返回，则会从该模板中选择一条语句进行返回
