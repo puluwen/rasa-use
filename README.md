@@ -204,7 +204,7 @@ pipeline:
 rasa core的训练也需要两个文件：一个是定义domain的文件，定义了意图、实体、槽、actin和模板回复；一个story.md文件，用意图和action构建了会话的训练数据。相关文件在`core_data`目录下。
 - domain.yaml文件
 
-````yaml
+```yaml
 slots:
   槽名1：
     - type: text
@@ -248,6 +248,7 @@ actions:
 * inform_num{"num":"1"}  包含的实体
   - Numaction
 ```
+
 ## 4.1 Rasa core的训练
 类似nlu，也有两种方式：
 - 直接调用系统train方法
@@ -321,6 +322,7 @@ class ActionListen(Action):
     def run(self, dispatcher, tracker, domain):
         return []
 ```
+
 新版FallbackPolicy默认调用action_default_fallback，然后调用的是utter_default这个模板。
 ActionDefaultFallback源码：
 ```python
