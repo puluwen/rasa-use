@@ -144,7 +144,7 @@ def features_for_patterns(self, message):
         for i, exp in enumerate(self.known_patterns):#遍历全部正则
             match = re.search(exp["pattern"], message.text)
             if match is not None:#当前正则匹配上
-                for t in message.get("tokens", []):#若分词token和正则结果又交叉，则设置一个标记
+                for t in message.get("tokens", []):#若分词token和正则结果有交叉，则设置一个标记
                     if t.offset < match.end() and t.end > match.start():
                         t.set("pattern", i)
                 found.append(1.0)#匹配上，增加一个维度，值为1.0
@@ -156,7 +156,7 @@ def features_for_patterns(self, message):
 
 ## 3.5 自定义NLU流水线组件
 nlu流水线中，各个组件就像是流水线上的工人一样，从流水线上取一些东西，计算完毕后把结果放回流水线上，而这个流水线就是message变量。每个组件从message中取数据，计算完毕后又把计算结果更新到message中。
-nlu的流水线组件都继承与Component类，其有些重要的属性和方法。
+nlu的流水线组件都继承于Component类，其有些重要的属性和方法。
 ```python
 class Component(object):
     name = ""#组件名字，
