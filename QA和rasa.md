@@ -22,7 +22,7 @@ https://github.com/RasaHQ/rasa_nlu
 https://nlu.rasa.ai/
 ## Rasa core：对话管理框架
 * 状态跟踪
-* licy训练
+* Plicy训练
 * Online learning
 https://core.rasa.ai/
 #### NLU 的难点主要在语料的准备， 接下来就自己了解到的经验进行一一记录
