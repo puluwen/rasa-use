@@ -25,5 +25,3 @@ requirements_bare.txt
 pip install ./Twisted-18.7.0-cp36-cp36m-win_amd64.whl
 pip install rasa_nlu==0.12.3
 ```
-# 总结
-使用python时，需要使用编译器对代码进行编译时，可以找找有没有已经编译好了的，编译是一个很耗时的工作。前提是**找到是哪个包需要编译**s。
