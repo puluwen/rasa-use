@@ -3,17 +3,17 @@
 * Task-bot：任务型对话系统
 * Chichat-bot：闲聊系统
 # 1任务型对话系统
-![](index_files/273095256.png)
+![](picture/273095256.png)
 ## 1.1 Natural Language Understanding,NLU,自然语言理解
 ## 1.2 Dialogue State Tracking（DST）状态追踪
 已经填充的槽位，历史对话
 ## 1.3 Dialogue Policy对话决策
 系统如何做出反馈动作
-![](index_files/268821375.png)
+![](picture/268821375.png)
 ## 1.4 Natural Language Generation，NLG，自然语言生成
-![](index_files/268960699.png)
+![](picture/268960699.png)
 # 2 其他框架
-![](index_files/269088152.png)
+![](picture/269088152.png)
 # 3 Rasa
 ## Rasa nlu：自然语言理解框架
 * 实体识别
